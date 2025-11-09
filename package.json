@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "سیستم هوشمند تتراشاپ - مستقر روی Vercel",
   "scripts": {
-    "build": "echo '🚀 ساخت پروژه تتراشاپ' && mkdir -p api",
-    "dev": "python -m http.server 3000"
+    "build": "node build.js",
+    "dev": "python -m http.server 3000",
+    "vercel-build": "node build.js"
   },
   "dependencies": {},
   "devDependencies": {},
