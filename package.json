@@ -1,0 +1,11 @@
+{
+  "name": "tetrashop-vercel",
+  "version": "1.0.0",
+  "description": "سیستم تتراشاپ روی Vercel",
+  "scripts": {
+    "build": "echo 'Build completed'",
+    "dev": "python api/index.py"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
