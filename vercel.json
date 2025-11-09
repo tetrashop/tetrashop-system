@@ -2,15 +2,12 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/**/*.py",
+      "src": "api/*.py",
       "use": "@vercel/python"
     },
     {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "outputDirectory": "dist"
-      }
+      "src": "index.html",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
@@ -22,9 +19,5 @@
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ],
-  "outputDirectory": "dist",
-  "env": {
-    "PYTHONPATH": "/var/task/api"
-  }
+  ]
 }
