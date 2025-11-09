@@ -1,0 +1,12 @@
+{
+  "session_id": "session_1762693319_test_user_1762693319",
+  "user_id": "test_user_1762693319",
+  "context": {
+    "test": true,
+    "language": "persian",
+    "platform": "termux",
+    "timestamp": 1762693319.3588448
+  },
+  "created_at": 1762693319.3686845,
+  "status": "active"
+}

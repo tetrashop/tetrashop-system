@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+# tetrashop-system
+||||||| (empty tree)
+=======
 - 👋 Hi, I’m @tetrashop
 - 👀 I’m interested in science almost benefit.
 - 🌱 I’m currently learning lifes.
@@ -8,3 +12,4 @@
 tetrashop/tetrashop is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 You can click the Preview link to take a look at your changes.
 --->
+>>>>>>> 9a718c3 (Create README.md)
