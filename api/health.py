@@ -1,11 +1,16 @@
 from http.server import BaseHTTPRequestHandler
+from http import HTTPStatus
 import json
 import time
 
 def handler(request, response):
-    return response.json({
+    response.status(HTTPStatus.OK)
+    response.headers['Content-Type'] = 'application/json; charset=utf-8'
+    
+    data = {
         "status": "healthy",
         "timestamp": time.time(),
-        "platform": "Vercel",
         "message": "✅ سیستم تتراشاپ سالم است"
-    })
+    }
+    
+    response.send(json.dumps(data, ensure_ascii=False))
