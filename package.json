@@ -2,13 +2,14 @@
   "name": "tetrashop-api",
   "version": "1.0.0",
   "description": "Tetrashop Adaptive System API",
-  "type": "module",
+  "main": "server.js",
   "scripts": {
     "dev": "node server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "vercel-dev": "vercel dev"
   },
   "dependencies": {},
   "engines": {
-    "node": ">=18.x"
+    "node": ">=16.x"
   }
 }
