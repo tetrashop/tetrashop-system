@@ -1,0 +1,11 @@
+{
+  "session_id": "session_1762693300_user_123",
+  "user_id": "user_123",
+  "context": {
+    "test": true,
+    "language": "fa",
+    "platform": "termux"
+  },
+  "created_at": 1762693300.86358,
+  "status": "active"
+}

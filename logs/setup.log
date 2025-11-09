@@ -1,0 +1,58 @@
+[2025-11-09 16:03:02] 🚀 شروع راه‌اندازی تتراشاپ...
+[2025-11-09 16:03:02] 📦 نصب وابستگی‌های پایتون...
+[2025-11-09 16:03:02] 🔄 نصب بسته‌ها...
+[2025-11-09 16:03:04] ⚠️ نصب بسته‌ها - هشدار: ERROR: Installing pip is forbidden, this will break the python-pip package (termux).
+
+[2025-11-09 16:03:04] 🔄 نصب بسته‌ها...
+[2025-11-09 16:05:11] ⚠️ نصب بسته‌ها - هشدار:   error: subprocess-exited-with-error
+  
+  × installing build dependencies for pydantic-core did not run successfully.
+  │ exit code: 1
+  ╰─> [28 lines of output]
+      Collecting maturin<2,>=1
+        Downloading maturin-1.9.6.tar.gz (214 kB)
+        Installing build dependencies: started
+        Installing build dependencies: finished with status 'done'
+        Getting requirements to build wheel: started
+        Getting requirements to build wheel: finished with status 'done'
+        Installing backend dependencies: started
+        Installing backend dependencies: finished with status 'done'
+        Preparing metadata (pyproject.toml): started
+        Preparing metadata (pyproject.toml): finished with status 'error'
+        error: subprocess-exited-with-error
+      
+        × Preparing metadata (pyproject.toml) did not run successfully.
+        │ exit code: 1
+        ╰─> [3 lines of output]
+            Python reports SOABI: cpython-312
+            Unsupported platform: 312
+            Rust not found, installing into a temporary directory
+            [end of output]
+      
+        note: This error originates from a subprocess, and is likely not a problem with pip.
+      error: metadata-generation-failed
+      
+      × Encountered error while generating package metadata.
+      ╰─> maturin
+      
+      note: This is an issue with the package mentioned above, not pip.
+      hint: See above for details.
+      [end of output]
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+ERROR: Failed to build 'pydantic-core' when installing build dependencies for pydantic-core
+
+[2025-11-09 16:05:11] 🔄 نصب بسته‌ها...
+[2025-11-09 16:05:13] ✅ نصب بسته‌ها - موفق
+[2025-11-09 16:05:13] 📁 ایجاد ساختار دایرکتوری...
+[2025-11-09 16:05:13]    📂 ایجاد data/sessions
+[2025-11-09 16:05:13]    📂 ایجاد data/knowledge
+[2025-11-09 16:05:13]    📂 ایجاد logs/api
+[2025-11-09 16:05:13]    📂 ایجاد logs/deployment
+[2025-11-09 16:05:13]    📂 ایجاد config
+[2025-11-09 16:05:13]    📂 ایجاد scripts
+[2025-11-09 16:05:13]    📂 ایجاد monitoring
+[2025-11-09 16:05:13] ⚙️ ایجاد فایل‌های پیکربندی...
+[2025-11-09 16:05:13] 🚀 ایجاد اپلیکیشن FastAPI...
+[2025-11-09 16:05:13] 🎉 راه‌اندازی تتراشاپ با موفقیت کامل شد!
+[2025-11-09 16:05:13] ⏱️ زمان اجرا: 130.91 ثانیه
