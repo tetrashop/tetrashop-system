@@ -1,11 +1,14 @@
 {
   "name": "tetrashop-vercel",
   "version": "1.0.0",
-  "description": "سیستم تتراشاپ روی Vercel",
+  "description": "سیستم هوشمند تتراشاپ - مستقر روی Vercel",
   "scripts": {
-    "build": "echo 'Build completed'",
-    "dev": "python api/index.py"
+    "build": "echo '🚀 ساخت پروژه تتراشاپ' && mkdir -p api",
+    "dev": "python -m http.server 3000"
   },
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18"
+  }
 }
