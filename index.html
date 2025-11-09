@@ -68,6 +68,22 @@
             display: inline-block;
             margin: 20px 0;
         }
+        .error {
+            background: #ef4444;
+        }
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #ffffff;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
@@ -76,7 +92,8 @@
         <p>سیستم هوشمند مدیریت مخازن - مستقر شده روی Vercel</p>
         
         <div class="status" id="status">
-            در حال بررسی وضعیت...
+            <span class="loading" id="loading"></span>
+            <span id="statusText">در حال بررسی وضعیت...</span>
         </div>
         
         <div>
@@ -86,27 +103,49 @@
         </div>
         
         <div class="result" id="result"></div>
+        
+        <div style="margin-top: 30px; font-size: 0.9rem; opacity: 0.7;">
+            <p>اگر با خطا مواجه شدید، صفحه را رفرش کنید یا چند دقیقه دیگر تلاش کنید.</p>
+        </div>
     </div>
 
     <script>
+        const API_BASE = '/api';
+        
         async function testAPI() {
-            showResult('در حال تست API...');
+            showLoading('در حال تست API...');
             try {
-                const response = await fetch('/api/');
-                const data = await response.json();
+                const response = await fetch(API_BASE + '/');
+                const text = await response.text();
+                
+                let data;
+                try {
+                    data = JSON.parse(text);
+                } catch (e) {
+                    throw new Error(`پاسخ JSON نیست: ${text.substring(0, 100)}...`);
+                }
+                
                 showResult(JSON.stringify(data, null, 2));
-                updateStatus('✅ سیستم فعال');
+                updateStatus('✅ سیستم فعال', 'success');
             } catch (error) {
                 showResult('❌ خطا: ' + error.message);
-                updateStatus('❌ خطا در اتصال');
+                updateStatus('❌ خطا در اتصال', 'error');
             }
         }
         
         async function testHealth() {
-            showResult('در حال تست سلامت...');
+            showLoading('در حال تست سلامت...');
             try {
-                const response = await fetch('/api/health');
-                const data = await response.json();
+                const response = await fetch(API_BASE + '/health');
+                const text = await response.text();
+                
+                let data;
+                try {
+                    data = JSON.parse(text);
+                } catch (e) {
+                    throw new Error(`پاسخ JSON نیست: ${text.substring(0, 100)}...`);
+                }
+                
                 showResult(JSON.stringify(data, null, 2));
             } catch (error) {
                 showResult('❌ خطا: ' + error.message);
@@ -114,9 +153,9 @@
         }
         
         async function createSession() {
-            showResult('در حال ایجاد سشن...');
+            showLoading('در حال ایجاد سشن...');
             try {
-                const response = await fetch('/api/session', {
+                const response = await fetch(API_BASE + '/session', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -126,11 +165,26 @@
                         context: { test: true }
                     })
                 });
-                const data = await response.json();
+                
+                const text = await response.text();
+                
+                let data;
+                try {
+                    data = JSON.parse(text);
+                } catch (e) {
+                    throw new Error(`پاسخ JSON نیست: ${text.substring(0, 100)}...`);
+                }
+                
                 showResult(JSON.stringify(data, null, 2));
             } catch (error) {
                 showResult('❌ خطا: ' + error.message);
             }
+        }
+        
+        function showLoading(message) {
+            const result = document.getElementById('result');
+            result.innerHTML = `<div class="loading"></div> ${message}`;
+            result.style.display = 'block';
         }
         
         function showResult(content) {
@@ -139,8 +193,19 @@
             result.style.display = 'block';
         }
         
-        function updateStatus(message) {
-            document.getElementById('status').textContent = message;
+        function updateStatus(message, type = 'success') {
+            const status = document.getElementById('status');
+            const statusText = document.getElementById('statusText');
+            const loading = document.getElementById('loading');
+            
+            statusText.textContent = message;
+            loading.style.display = 'none';
+            
+            if (type === 'success') {
+                status.style.background = '#10b981';
+            } else {
+                status.style.background = '#ef4444';
+            }
         }
         
         // تست خودکار هنگام لود صفحه
