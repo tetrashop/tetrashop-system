@@ -3,367 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تتراشاپ - سیستم هوشمند مدیریت مخازن</title>
+    <title>تتراشاپ - سیستم هوشمند</title>
     <style>
-        :root {
-            --primary: #667eea;
-            --secondary: #764ba2;
-            --success: #10b981;
-            --danger: #ef4444;
-            --warning: #f59e0b;
-            --dark: #1f2937;
-            --light: #f8fafc;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         body {
-            font-family: 'Vazirmatn', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: var(--dark);
-            line-height: 1.6;
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        .header {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
             text-align: center;
-            padding: 60px 0 40px;
-            color: white;
-        }
-        
-        .header h1 {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            background: linear-gradient(45deg, #fff, #e0e7ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .header p {
-            font-size: 1.3rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .status-badge {
-            display: inline-block;
-            background: var(--success);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin-top: 15px;
-        }
-        
-        .dashboard {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-        
-        @media (max-width: 768px) {
-            .dashboard {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        .card {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
-        }
-        
-        .card h2 {
-            color: var(--primary);
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-            border-bottom: 3px solid var(--primary);
-            padding-bottom: 10px;
-        }
-        
-        .api-test {
-            background: var(--light);
-            border-radius: 15px;
-            padding: 25px;
-            margin: 20px 0;
-            border-right: 5px solid var(--primary);
-        }
-        
-        .btn {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            margin: 10px 5px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-        }
-        
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-        }
-        
-        .btn:active {
-            transform: translateY(0);
-        }
-        
-        .btn-success {
-            background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
-        }
-        
-        .btn-warning {
-            background: linear-gradient(135deg, var(--warning) 0%, #d97706 100%);
-        }
-        
-        .result {
-            background: #1f2937;
-            color: #d1d5db;
-            padding: 20px;
-            border-radius: 12px;
-            margin-top: 20px;
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
-            max-height: 300px;
-            overflow-y: auto;
-            border: 1px solid #374151;
-        }
-        
-        .endpoint-list {
-            list-style: none;
-        }
-        
-        .endpoint-list li {
-            padding: 15px;
-            background: white;
-            margin: 10px 0;
-            border-radius: 10px;
-            border-right: 4px solid var(--primary);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 50px 20px;
+            margin: 0;
+            min-height: 100vh;
             display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
         }
-        
-        .endpoint-method {
-            background: var(--primary);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 6px;
+        .container {
+            max-width: 800px;
+            background: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        .btn {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 16px;
             font-weight: bold;
-            margin-left: 10px;
-            font-size: 0.8rem;
+            margin: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
         }
-        
-        .endpoint-get { background: var(--success); }
-        .endpoint-post { background: var(--primary); }
-        .endpoint-put { background: var(--warning); }
-        .endpoint-delete { background: var(--danger); }
-        
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid #ffffff;
-            border-radius: 50%;
-            border-top-color: transparent;
-            animation: spin 1s ease-in-out infinite;
-            margin-right: 10px;
+        .btn:hover {
+            transform: translateY(-2px);
         }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        .hidden {
+        .result {
+            background: rgba(0,0,0,0.3);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: left;
+            font-family: monospace;
+            max-height: 300px;
+            overflow-y: auto;
             display: none;
         }
-        
-        .footer {
-            text-align: center;
-            padding: 40px 0;
-            color: white;
-            opacity: 0.8;
-            margin-top: 60px;
+        .status {
+            background: #10b981;
+            padding: 10px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 20px 0;
         }
     </style>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>🚀 تتراشاپ</h1>
-            <p>سیستم هوشمند مدیریت و به‌روزرسانی ۲۴ مخزن با بالاترین کیفیت</p>
-            <div class="status-badge" id="statusBadge">
-                <span class="loading" id="statusLoading"></span>
-                <span id="statusText">در حال بررسی وضعیت...</span>
-            </div>
+        <h1>🚀 تتراشاپ</h1>
+        <p>سیستم هوشمند مدیریت مخازن - مستقر شده روی Vercel</p>
+        
+        <div class="status" id="status">
+            در حال بررسی وضعیت...
         </div>
         
-        <div class="dashboard">
-            <!-- کارت وضعیت سیستم -->
-            <div class="card">
-                <h2>📊 وضعیت سیستم</h2>
-                <div id="systemInfo">
-                    <p>در حال دریافت اطلاعات...</p>
-                </div>
-                
-                <div class="api-test">
-                    <h3>بررسی سلامت</h3>
-                    <button class="btn btn-success" onclick="testHealth()">
-                        تست سلامت سیستم
-                    </button>
-                    <div id="healthResult" class="result hidden"></div>
-                </div>
-            </div>
-            
-            <!-- کارت مدیریت سشن -->
-            <div class="card">
-                <h2>🔧 مدیریت سشن</h2>
-                <div class="api-test">
-                    <h3>ایجاد سشن جدید</h3>
-                    <button class="btn" onclick="createSession()">
-                        ایجاد سشن تست
-                    </button>
-                    <div id="sessionResult" class="result hidden"></div>
-                </div>
-            </div>
-            
-            <!-- کارت مستندات API -->
-            <div class="card" style="grid-column: 1 / -1;">
-                <h2>📡 مستندات API</h2>
-                <ul class="endpoint-list">
-                    <li>
-                        <span class="endpoint-method endpoint-get">GET</span>
-                        <code>/api/</code>
-                        <span style="margin-right: 15px;">- اطلاعات اصلی سیستم</span>
-                    </li>
-                    <li>
-                        <span class="endpoint-method endpoint-get">GET</span>
-                        <code>/api/health</code>
-                        <span style="margin-right: 15px;">- بررسی سلامت سیستم</span>
-                    </li>
-                    <li>
-                        <span class="endpoint-method endpoint-post">POST</span>
-                        <code>/api/session/create</code>
-                        <span style="margin-right: 15px;">- ایجاد سشن جدید</span>
-                    </li>
-                </ul>
-            </div>
+        <div>
+            <button class="btn" onclick="testAPI()">تست API اصلی</button>
+            <button class="btn" onclick="testHealth()">تست سلامت</button>
+            <button class="btn" onclick="createSession()">ایجاد سشن</button>
         </div>
         
-        <div class="footer">
-            <p>تتراشاپ - نسخه ۱.۰.۰ | مستقر شده روی Vercel</p>
-            <p>
-                <a href="https://github.com/tetrashop/tetrashop-system" 
-                   style="color: white; text-decoration: none;">
-                   📂 مشاهده در گیت‌هاب
-                </a>
-            </p>
-        </div>
+        <div class="result" id="result"></div>
     </div>
 
     <script>
-        const API_BASE = '/api';
-        
-        // بررسی وضعیت سیستم هنگام لود صفحه
-        async function checkSystemStatus() {
+        async function testAPI() {
+            showResult('در حال تست API...');
             try {
-                const response = await fetch(API_BASE + '/');
+                const response = await fetch('/api/');
                 const data = await response.json();
-                
-                document.getElementById('systemInfo').innerHTML = `
-                    <p><strong>پلتفرم:</strong> ${data.platform || 'Vercel'}</p>
-                    <p><strong>ورژن:</strong> ${data.version || '1.0.0'}</p>
-                    <p><strong>پیام:</strong> ${data.message || 'سیستم فعال'}</p>
-                    <p><strong>وضعیت:</strong> <span style="color: var(--success)">فعال ✅</span></p>
-                `;
-                
-                document.getElementById('statusLoading').classList.add('hidden');
-                document.getElementById('statusText').textContent = 'سیستم فعال و سالم';
-                document.getElementById('statusBadge').style.background = 'var(--success)';
-                
+                showResult(JSON.stringify(data, null, 2));
+                updateStatus('✅ سیستم فعال');
             } catch (error) {
-                document.getElementById('systemInfo').innerHTML = `
-                    <p style="color: var(--danger)">❌ خطا در اتصال به API: ${error.message}</p>
-                `;
-                document.getElementById('statusLoading').classList.add('hidden');
-                document.getElementById('statusText').textContent = 'خطا در اتصال';
-                document.getElementById('statusBadge').style.background = 'var(--danger)';
+                showResult('❌ خطا: ' + error.message);
+                updateStatus('❌ خطا در اتصال');
             }
         }
         
-        // تست سلامت سیستم
         async function testHealth() {
-            const resultDiv = document.getElementById('healthResult');
-            resultDiv.classList.remove('hidden');
-            resultDiv.innerHTML = '<div class="loading"></div> در حال بررسی...';
-            
+            showResult('در حال تست سلامت...');
             try {
-                const response = await fetch(API_BASE + '/health');
+                const response = await fetch('/api/health');
                 const data = await response.json();
-                resultDiv.textContent = JSON.stringify(data, null, 2);
+                showResult(JSON.stringify(data, null, 2));
             } catch (error) {
-                resultDiv.textContent = `❌ خطا: ${error.message}`;
+                showResult('❌ خطا: ' + error.message);
             }
         }
         
-        // ایجاد سشن جدید
         async function createSession() {
-            const resultDiv = document.getElementById('sessionResult');
-            resultDiv.classList.remove('hidden');
-            resultDiv.innerHTML = '<div class="loading"></div> در حال ایجاد سشن...';
-            
+            showResult('در حال ایجاد سشن...');
             try {
-                const response = await fetch(API_BASE + '/session/create', {
+                const response = await fetch('/api/session', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        user_id: 'کاربر_نمایشی',
-                        context: {
-                            platform: 'Vercel',
-                            language: 'فارسی',
-                            timestamp: new Date().toLocaleString('fa-IR')
-                        }
+                        user_id: 'کاربر تست',
+                        context: { test: true }
                     })
                 });
-                
                 const data = await response.json();
-                resultDiv.textContent = JSON.stringify(data, null, 2);
+                showResult(JSON.stringify(data, null, 2));
             } catch (error) {
-                resultDiv.textContent = `❌ خطا: ${error.message}`;
+                showResult('❌ خطا: ' + error.message);
             }
         }
         
-        // راه‌اندازی اولیه
-        document.addEventListener('DOMContentLoaded', function() {
-            checkSystemStatus();
-        });
+        function showResult(content) {
+            const result = document.getElementById('result');
+            result.textContent = content;
+            result.style.display = 'block';
+        }
+        
+        function updateStatus(message) {
+            document.getElementById('status').textContent = message;
+        }
+        
+        // تست خودکار هنگام لود صفحه
+        window.addEventListener('load', testAPI);
     </script>
 </body>
 </html>
